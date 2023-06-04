@@ -1,0 +1,143 @@
+<div class="outer">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box  p-3 text-white bg-dark"style="width: auto;height: 100vh;" id="navigation">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4" >Jango</span>
+              </a>
+              <hr>
+              <ul class="nav nav-pills flex-column mb-auto" >
+                <li class="nav-item">
+                  <a routerLink="/dashboard" class="nav-link text-white" >
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/fundaccount" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    Fund Account
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/transfer" class="nav-link active" aria-current="page" style="background-color: gold; color: black;">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    Transfer
+                  </a>
+                </li>
+                <li>
+                  <a  routerLink="/profile" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/login" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                    Log-out
+                  </a>
+                </li>
+              </ul>
+          
+          
+          
+           
+               
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Page title -->
+                            <div class="my-5" style="background-color:  #343a40;color: white;">
+                                <h3>Transfer</h3>
+                                <hr>
+                            </div>
+                            <div class="row height d-flex justify-content-center align-items-center" style="background-color: white; height: 100%;" >
+                              
+                                <div class="col-md-8">
+                                  
+                                  <form [formGroup]="myUserData" *ngIf="change" id="SearchForAccount">
+                                    <h4> Enter User Detail</h4>
+                                  <hr>
+                                  <div class="search">
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" formControlName="Search" id="Searchdata" class="form-control" placeholder="Enter Username/Email/Phonenumber">
+                                    <button class="" (click)="Userdata()" style="background-color: #04bf2963 ">Search</button>
+                                  </div>
+                                  </form>
+                                  <form class="bg-light-soft" [formGroup]="Transferdatas" *ngIf="Tchange" id="TransferForm"  style="border-radius: 1rem;">
+                                    <div class="row mb-5 gx-5">
+                                        <!-- Contact detail -->
+                                        <div class="col-xxl-12 mb-5 mb-xxl-0">
+                                            <div class="bg-light-soft px-4 py-5 rounded">
+                                                <div class="row g-3">
+                                                    <h4 class="mb-4 mt-0">User Information</h4>
+                                                    <hr>
+                                                    <!-- First Name -->
+                                                    <div class="col-md-12">
+                                                        <div class="input-field">
+                                                            <span class="fa fa-user p-2"></span>
+                                                            <input  type="text" placeholder="Name" value="{{SearchData.response}}" [readOnly]="true">
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+                                                    <input type="text"  placeholder="Name"value="{{CurrentUsers}}"  hidden="" >
+                                                   
+                                                    <div class="col-md-12">
+                                                      <div class="input-field">
+                                                          <span class="fa fa-user p-2"></span>
+                                                          <input formControlName="Amount" type="text"  id="AmountS" placeholder="Amount" >
+                                                      </div>
+                              
+                                                  </div>
+                                                  <div class="col-md-12">
+                                                    <div class="input-field">
+                                                        <span class="fa fa-lock p-2"></span>
+                                                        <input formControlName="Pin" type="text" id="PinS"  placeholder="Pin" >
+                                                    </div>
+                            
+                                                </div>
+                                                   
+                                                   
+                                                </div> <!-- Row END -->
+                                            </div>
+                                        </div>
+                                        <!-- Upload profile -->
+                                        
+                                       
+                                    </div> 
+                                    <div class="col-md-12">
+                                      <button type="submit" (click)="Transferdata()" class="btn btn-outline-warning btn-block mt-4 w-100 "> Send</button>
+                                      
+                                  </div>
+                                  <div class="col-md-12">
+                                    <button type="submit" (click)="Goback()" class="btn btn-outline-warning btn-block mt-4 w-100 "> Back</button>
+                                    
+                                </div>
+                                     
+                            </form> <!-- Form END -->
+                               
+                            </div>
+                            
+                            <!-- <div class="col-md-4" style="border-left: 3px solid gold; "> -->
+    
+
+
+
+                                <!-- </div> -->
+                              
+                              </div>
+                           
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

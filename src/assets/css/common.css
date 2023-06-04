@@ -1,0 +1,182 @@
+.outer{
+    height:  100vh;
+    background-image: url("BnG.jpg");/*linear-gradient(to top, rgb(214, 188, 44) 50%, rgb(58, 58, 58) 90%) no-repeat*/;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+   }
+
+  
+   
+   .panel-heading{
+       text-align: center;
+       margin-bottom: 10px;
+   }
+   
+   #forget{
+       min-width: 100px;
+       margin-left: auto;
+       text-decoration: none;
+       cursor: pointer;
+   
+   }
+   a{
+       color: black;
+   
+   }
+   a:hover{
+       text-decoration: none;
+       color: gold;
+   }
+   
+   .form-inline label {
+       padding-left: 10px;
+       margin: 0;
+       cursor: pointer;
+   }
+   .btn{
+       margin-top: 20px;
+       border-radius: 15px;
+       color: black;
+   }
+   
+   .panel{
+       min-height: 380px;
+       box-shadow: 20px 20px 80px rgb(184, 176, 87);
+       border-radius: 12px;
+       margin-top: auto;
+       margin-bottom: auto;
+
+   
+   }
+   
+   .input-field{
+       border-radius: 5px;
+       padding:5px;
+       display:flex;
+       align-items: center;
+       cursor: pointer;
+       border: 1px solid black;
+       color: gold;
+   
+   }
+
+   .password-field{
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid black;
+    color: gold;
+    padding:5px;
+    display:flex;
+    align-items: center;
+
+
+   }
+   .input-field.error{
+       border: 1px solid red;
+       color: red;
+   }
+   
+   input[type='text'],input[type='password']{
+   border: none;
+   outline: none;
+   box-shadow: none;
+   width: 100%;
+   
+   }
+   
+   .fa-eye-slash.btn{
+       border: none;
+       outline:none;
+       box-shadow: none;
+   
+   }
+   img{
+    width: 100%;
+   height:100%;
+   object-fit: cover;
+   border-radius: 1rem;
+   /*position: relative;*/
+   }
+
+   #myNameTag{
+   
+    mix-blend-mode: difference;
+    color: transparent;
+ background-image: linear-gradient(to left, violet, indigo, green, blue, yellow, orange, red);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    font-family: "Audiowide", sans-serif;
+   }
+#diffBack{
+  filter:  url("C:\Users\olaoluwaakinlade\OneDrive - Globus Bank Limited\Documents\angularProject\angular_auth\AngularAuthUI\src\app\components\signup\Jango.jpeg");
+/*need to remove this / only using it so that angular can see the image */
+
+}
+
+#NameStyle{
+    color: #b48608; font-family: 'Droid serif', serif; font-size: 26px; font-weight: 400; font-style: italic;   text-align: center; 
+}
+
+.card-text-dashboard{
+
+    color: #b48608; font-family: 'Droid serif', serif; font-size: 26px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px; text-align: center;
+}
+.page-title-box{
+    font-size: 18px;
+    margin: 0;
+    line-height: 75px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+ background-color: #343a40;
+     color: white;
+
+}
+.search{
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+      
+    }
+.search input{
+
+        height: 60px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+
+
+       }
+
+
+.search input:focus{
+
+        box-shadow: none;
+        border: 2px solid gold;
+
+
+       }
+
+.search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+.search button{
+
+         position: absolute;
+          top: 5px; 
+        right: 5px;
+        height: 50px;
+        width: 110px;  
+        /* background: gold; */
+
+       }
+#AdressH{
+    height: 8vh;
+
+}

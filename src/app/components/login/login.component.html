@@ -1,0 +1,46 @@
+<div class="outer">
+    <div class ="container py-5 ">
+        <div class="rows">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3 ">
+                <div class ="panel border bg-white">
+                    <div class = "panel-heading">
+                        <h3 class="pt-3 font-weight-bold" id="myNameTag"> Jango </h3>
+                    </div>
+                    <div class = "panel-body p-3">
+                        <form  [formGroup]="loginForm">
+                            <div class ="form-group pt-3">
+                                <div class="input-field" [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input  formControlName="username" type="text" placeholder="Username" >
+                                </div>
+                                <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')" class="text-danger">Username required</small>
+                                <div class ="form-group pt-3">
+                                    <div class="input-field" [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
+                                        <span class="fa fa-lock p-2"></span>
+                                        <input formControlName="password"   type="password" placeholder="Password">
+                                    </div>
+                                </div>
+                                <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger">Password required</small>
+                                <button  (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" class="btn btn-outline-warning btn-block mt-4 w-100 "> Login</button>
+
+                                <div class="form-inline fr mt-4">
+                                    <a id="foget" class="font-weight-bold"> Forgot password?</a><br>
+                                    
+                                </div>
+                                <div class="text-center pt-4 text-muted"> Dont have account?<a id="forget" routerLink="/signup"> Sign up</a></div>
+                            </div>
+                        </form>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+ 
+   
+</div>

@@ -1,0 +1,227 @@
+<div class="outer">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box  p-3 text-white bg-dark"style="width: auto;height: 100vh;" id="navigation">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4" >Jango</span>
+              </a>
+              <hr>
+              <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                  <a routerLink="/dashboard" class="nav-link text-white" >
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/fundaccount" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    Fund Account
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/transfer" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    Transfer
+                  </a>
+                </li>
+                <li>
+                  <a  routerLink="/profile" class="nav-link active" aria-current="page" style="background-color: gold; color: black;">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/login" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                    Log-out
+                  </a>
+                </li>
+              </ul>
+          
+          
+          
+           
+               
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <div class="container">
+                    <div class="row">
+                            <div class="col-12">
+                                <!-- Page title -->
+                                <div class="my-5" style="background-color:  #343a40;color: white;">
+                                    <h3>My Profile</h3>
+                                    <hr>
+                                </div>
+                                <!-- Form START -->
+                                <form class="file-upload" [formGroup]="myUserData" style="box-shadow: 20px 20px 80px rgb(8, 8, 8);height: 70%; background-color: white;">
+                                    <div class="row mb-5 gx-5">
+                                        <!-- Contact detail -->
+                                        <div class="col-xxl-8 mb-5 mb-xxl-0" *ngIf="change">
+                                            <div class="bg-light-soft px-4 py-5 rounded">
+                                                <div class="row g-3">
+                                                    <h4 class="mb-4 mt-0">User details</h4>
+                                                    <hr>
+                                                    <!-- First Name -->
+                                                    <div class="col-md-6">
+                                                        <label>Firstname</label>
+                                                        <!-- <span class="fa fa-user p-2"></span> -->
+                                                        <h5> {{Profiledata.firstname}} </h5>
+                                                        <!-- <div class="input-field">
+                                                           
+                                                           
+                                                             <input formControlName="firstname" value="{{Profiledata.firstname}}" type="text" placeholder="Firstname" [readOnly]="true"> 
+                                                        </div> -->
+                                                        
+                                                    </div>
+                                                    <!-- Last name -->
+                                                    <div class="col-md-6">
+                                                        <!-- <div class="input-field">
+                                                            <span class="fa fa-user p-2"></span>
+                                                            <input formControlName="Lastname" value="{{Profiledata.lastname}}" type="text" placeholder="Lastname" [readOnly]="true">
+                                                        </div> -->
+                                                        <label>Lastname</label>
+                                                        <h5> {{Profiledata.lastname}} </h5>
+                                
+                                                    </div>
+                                                    <!-- Phone number -->
+                                                    <div class="col-md-6">
+                                                        <!-- <div class="input-field">
+                                                            <span class="fa fa-phone p-2"></span>
+                                                            <input formControlName="Phonenumber" value="{{Profiledata.phonenumber}}" type="text" placeholder="Phonenumber" [readOnly]="true" >
+                                                        </div> -->
+                                                        <label>Phonenumber</label>
+                                                        <h5> {{Profiledata.phonenumber}} </h5>
+                                                    </div>
+                                                    <!-- Mobile number -->
+                                                    <div class="col-md-6">
+                                                        <!-- <div class="input-field">
+                                                            <span class="fa fa-envelope p-2"></span>
+                                                            <input formControlName="Email" type="text" value="{{Profiledata.email}}" placeholder="Email" [readOnly]="true" >
+                                                        </div>
+                                                        -->
+                                                        <label>Email</label>
+                                                        <h5> {{Profiledata.email}} </h5>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-12">
+                                                        <!-- <div class="input-field">
+                                                            <span class="fa fa-user p-2"></span>
+                                                            <input formControlName="Address" type="text"  placeholder="Address" id="AdressH" [readOnly]="true">
+                                                        </div> -->
+                                                        <label>Address</label>
+                                                        <h5> {{Profiledata.lastname}} </h5>
+                                                      
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <button type="submit"  class="btn btn-outline-warning btn-block mt-4 w-100 "> Edit</button>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <button type="submit" class="btn btn-outline-warning btn-block mt-4 w-100"> Update</button>
+                                                    </div>
+                                                    
+                                                </div> <!-- Row END -->
+                                            </div>
+                                            <div class="col-xxl-8 mb-5 mb-xxl-0" *ngIf="change">
+                                                <div class="bg-light-soft px-4 py-5 rounded">
+                                                    <div class="row g-3">
+                                                        <h4 class="mb-4 mt-0">User details</h4>
+                                                        <hr>
+                                                        <!-- First Name -->
+                                                        <div class="col-md-6">
+                                                            
+                                                            
+                                                           
+                                                            <div class="input-field">
+                                                               
+                                                                <span class="fa fa-user p-2"></span> 
+                                                                 <input formControlName="firstname" value="{{Profiledata.firstname}}" type="text" placeholder="Firstname" [readOnly]="true"> 
+                                                            </div> 
+                                                            
+                                                        </div>
+                                                        <!-- Last name -->
+                                                        <div class="col-md-6">
+                                                             <div class="input-field">
+                                                                <span class="fa fa-user p-2"></span>
+                                                                <input formControlName="Lastname" value="{{Profiledata.lastname}}" type="text" placeholder="Lastname" [readOnly]="true">
+                                                            </div> 
+                                                            
+                                    
+                                                        </div>
+                                                        <!-- Phone number -->
+                                                        <div class="col-md-6">
+                                                             <div class="input-field">
+                                                                <span class="fa fa-phone p-2"></span>
+                                                                <input formControlName="Phonenumber" value="{{Profiledata.phonenumber}}" type="text" placeholder="Phonenumber" [readOnly]="true" >
+                                                            </div> 
+                                                            
+                                                        </div>
+                                                        <!-- Mobile number -->
+                                                        <div class="col-md-6">
+                                                             <div class="input-field">
+                                                                <span class="fa fa-envelope p-2"></span>
+                                                                <input formControlName="Email" type="text" value="{{Profiledata.email}}" placeholder="Email" [readOnly]="true" >
+                                                            </div>
+                                                            
+                                                            
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                            <div class="input-field">
+                                                                <span class="fa fa-user p-2"></span>
+                                                                <input formControlName="Address" type="text"  placeholder="Address" id="AdressH" [readOnly]="true">
+                                                            </div> 
+                                                            
+                                                          
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <button type="submit"  class="btn btn-outline-warning btn-block mt-4 w-100 "> Edit</button>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <button type="submit" class="btn btn-outline-warning btn-block mt-4 w-100"> Update</button>
+                                                        </div>
+                                                        
+                                                    </div> <!-- Row END -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Upload profile -->
+                                        <div class="col-xxl-4">
+                                            <div class="bg-secondary-soft px-4 py-5 rounded">
+                                                <div class="row g-3">
+                                                    <h4 class="mb-4 mt-0">Upload your profile photo</h4>
+                                                    <hr>
+                                                    <div class="text-center">
+                                                        <!-- Image upload -->
+                                                        <div class="square position-relative display-2 mb-3">
+                                                            <img src={{image}} class="imageR" id="myImg"alt="" >
+                                                        </div>
+                                                        <!-- Button -->
+                                                        <input type="file" id="customFile" name="file" hidden="" >
+                                                        <label class="btn btn-success-soft btn-block" for="customFile">Upload</label>
+                                                        <button type="button" class="btn btn-danger-soft">Remove</button>
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div> <!-- Row END -->
+                                    
+                            </form> <!-- Form END -->
+                            </div>
+                        </div>
+                        </div>
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>

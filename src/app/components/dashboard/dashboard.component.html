@@ -1,0 +1,139 @@
+
+<div class="outer">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box  p-3 text-white bg-dark"style="width: auto; height: 100vh;" id="navigation ">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4" >Jango</span>
+              </a>
+              <hr>
+              <ul class="nav nav-pills flex-column mb-auto" >
+                <li class="nav-item">
+                  <a routerLink="/dashboard" class="nav-link active" aria-current="page" style="background-color: gold; color: black;">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/fundaccount" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    Fund Account
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/transfer" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    Transfer
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/profile" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/login" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                    Log-out
+                  </a>
+                </li>
+              </ul>
+          
+          
+          
+           
+               
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+              
+               <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="my-5" style="background-color:  #343a40;color: white;">
+                      <h3>Dashboard</h3>
+                      <hr>
+                  </div>
+                      </div>
+                     
+                  
+                  </div>
+              <br>
+              <div class=""></div>
+                <div class="row height d-flex justify-content-center align-items-center">
+                  <div class="col-sm-8">
+                    <div class="card widget-flat bg-light  border-warning mb-3" >
+                    
+                      <div class="card-body" >
+                       
+                        <p class="card-text" id="NameStyle"> Hello, {{firstN.firstName}} {{firstN.lastName}}</p>
+                       <hr>
+                        <p class="card-text-dashboard" > Balance:{{Balancedata.balance}} </p>
+                        <p class="card-text-dashboard" id="MyAccountnumber"> Account Number:{{Balancedata.account_Number}}
+                        
+                      </div>
+                     
+                    </div>
+                  </div>
+                
+                </div>
+
+
+                <br>
+                <br>
+                
+                <table class="table" style="background-color: white;">
+                  <thead class="thead-dark">
+                    <tr>
+                     
+                      <th scope="col">Name</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Sender</th>
+                      <th scope="col">Reciever</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-warning"  *ngFor="let friend of TransactionDatas">
+                      
+                      <td>{{friend.firstname}} {{friend.lastname}}</td>
+                      <td>{{friend.amount}} {{friend.currency}}</td>
+                      <td>{{friend.date}}</td>
+                      <td>{{friend.account_Number_of_seneder}}</td>
+                      <td>{{friend.account_Number_of_reciever}}</td>
+                      
+                    </tr>
+                   
+                  </tbody>
+                </table>
+                
+                
+              </div> 
+            
+              
+               
+              
+
+
+              
+          
+           
+             
+             
+
+
+     
+             
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Modal -->
+   
+
+</div>

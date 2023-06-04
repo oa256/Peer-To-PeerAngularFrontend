@@ -1,0 +1,80 @@
+<div class="outer"  id ="diffBack">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;box-shadow: 20px 20px 80px rgb(184, 176, 87);">
+            <div class="row g-0 ">
+              <div class="col-md-6 col-lg-5  d-flex align-items-center" id="myCardSignUp">
+                <img src="Jango.jpeg"  alt="Jango-logos">
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center ">
+                <div class="card-body p-4 p-lg-5 text-black" >
+  
+                  <form [formGroup]="signUpForm">
+                  
+                    <div class ="form-group pt-3">
+                        <div class="input-field">
+                            <span class="fa fa-user p-2"></span>
+                            <input formControlName="username" type="text" placeholder="Username" >
+                        </div>
+                        <div class="row g-5 "> 
+                        <div class ="col-sm-6 pt-3">
+                            <div class="input-field">
+                                <span class="fa fa-user p-2"></span>
+                                <input formControlName="firstName" type="text" placeholder="Firstname" >
+                            </div>
+                        </div>
+                            <div class ="col-sm-6 pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input formControlName="lastName" type="text" placeholder="Lastname" >
+                                </div>
+                            </div>
+                        </div>
+                                <div class ="form-group pt-3">
+                                    <div class="input-field">
+                                        <span class="fa fa-envelope p-2"></span>
+                                        <input  formControlName="email"type="text" placeholder="Email" >
+                                    </div>
+                                </div>
+                                <div class ="form-group pt-3">
+                                    <div class="input-field">
+                                        <span class="fa fa-phone p-2"></span>
+                                        <input formControlName="phoneNumber"type="text" placeholder="Phonenumber" >
+                                    </div>
+                                </div>
+                        <div class="row"> 
+                            <div class="col-sm-6 pt-3">
+                                <div class="password-field ">
+                                <span class="fa fa-lock p-2"></span> 
+                                <input type="password" id="inputPassword6" formControlName="password" class="form-control" placeholder="Password" aria-describedby="passwordHelpInline">
+                            </div>
+                              </div>
+                              <div class="col-sm-6 pt-3">
+                                <div class="password-field ">
+                                 <span class="fa fa-lock p-2"></span> 
+                                <input type="password" id="inputPassword6" formControlName="confirmPassword" class="form-control" placeholder=" Confirm password" aria-describedby="passwordHelpInline">
+                                </div>
+                              </div>
+                             
+                        </div>
+                        <button  type="submit" (click)="onsignup()" class="btn btn-warning btn-block mt-4 w-100 ">
+                            <!-- <span class ="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+                            Sign up
+                            
+                            </button>
+        
+                        
+                        <div class="text-center pt-4 text-muted"> Already have account?<a id="forget" routerLink="/login"> Sign in</a></div>
+                    </div>
+                
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
