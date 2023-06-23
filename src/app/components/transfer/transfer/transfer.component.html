@@ -1,143 +1,330 @@
-<div class="outer">
-    <div class="container-fluid display-table">
-        <div class="row display-table-row">
-            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box  p-3 text-white bg-dark"style="width: auto;height: 100vh;" id="navigation">
-              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                <span class="fs-4" >Jango</span>
-              </a>
-              <hr>
-              <ul class="nav nav-pills flex-column mb-auto" >
-                <li class="nav-item">
-                  <a routerLink="/dashboard" class="nav-link text-white" >
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    Dashboard
-                  </a>
-                </li>
-                <li>
-                  <a routerLink="/fundaccount" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Fund Account
-                  </a>
-                </li>
-                <li>
-                  <a routerLink="/transfer" class="nav-link active" aria-current="page" style="background-color: gold; color: black;">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                    Transfer
-                  </a>
-                </li>
-                <li>
-                  <a  routerLink="/profile" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Profile
-                  </a>
-                </li>
-                <li>
-                  <a routerLink="/login" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Log-out
-                  </a>
-                </li>
-              </ul>
-          
-          
-          
-           
-               
-            </div>
-            <div class="col-md-10 col-sm-11 display-table-cell v-align">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- Page title -->
-                            <div class="my-5" style="background-color:  #343a40;color: white;">
-                                <h3>Transfer</h3>
-                                <hr>
-                            </div>
-                            <div class="row height d-flex justify-content-center align-items-center" style="background-color: white; height: 100%;" >
-                              
-                                <div class="col-md-8">
-                                  
-                                  <form [formGroup]="myUserData" *ngIf="change" id="SearchForAccount">
-                                    <h4> Enter User Detail</h4>
-                                  <hr>
-                                  <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input type="text" formControlName="Search" id="Searchdata" class="form-control" placeholder="Enter Username/Email/Phonenumber">
-                                    <button class="" (click)="Userdata()" style="background-color: #04bf2963 ">Search</button>
-                                  </div>
-                                  </form>
-                                  <form class="bg-light-soft" [formGroup]="Transferdatas" *ngIf="Tchange" id="TransferForm"  style="border-radius: 1rem;">
-                                    <div class="row mb-5 gx-5">
-                                        <!-- Contact detail -->
-                                        <div class="col-xxl-12 mb-5 mb-xxl-0">
-                                            <div class="bg-light-soft px-4 py-5 rounded">
-                                                <div class="row g-3">
-                                                    <h4 class="mb-4 mt-0">User Information</h4>
-                                                    <hr>
-                                                    <!-- First Name -->
-                                                    <div class="col-md-12">
-                                                        <div class="input-field">
-                                                            <span class="fa fa-user p-2"></span>
-                                                            <input  type="text" placeholder="Name" value="{{SearchData.response}}" [readOnly]="true">
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    
-                                                    <input type="text"  placeholder="Name"value="{{CurrentUsers}}"  hidden="" >
-                                                   
-                                                    <div class="col-md-12">
-                                                      <div class="input-field">
-                                                          <span class="fa fa-user p-2"></span>
-                                                          <input formControlName="Amount" type="text"  id="AmountS" placeholder="Amount" >
-                                                      </div>
-                              
-                                                  </div>
-                                                  <div class="col-md-12">
-                                                    <div class="input-field">
-                                                        <span class="fa fa-lock p-2"></span>
-                                                        <input formControlName="Pin" type="text" id="PinS"  placeholder="Pin" >
-                                                    </div>
-                            
-                                                </div>
-                                                   
-                                                   
-                                                </div> <!-- Row END -->
-                                            </div>
-                                        </div>
-                                        <!-- Upload profile -->
-                                        
-                                       
-                                    </div> 
-                                    <div class="col-md-12">
-                                      <button type="submit" (click)="Transferdata()" class="btn btn-outline-warning btn-block mt-4 w-100 "> Send</button>
-                                      
-                                  </div>
-                                  <div class="col-md-12">
-                                    <button type="submit" (click)="Goback()" class="btn btn-outline-warning btn-block mt-4 w-100 "> Back</button>
-                                    
-                                </div>
-                                     
-                            </form> <!-- Form END -->
-                               
-                            </div>
-                            
-                            <!-- <div class="col-md-4" style="border-left: 3px solid gold; "> -->
-    
 
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
+      <!-- Sidebar -->
+      <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #212529;" >
 
-                                <!-- </div> -->
-                              
-                              </div>
-                           
-                        </div>
+          <!-- Sidebar - Brand -->
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/dashboard">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+              <span class="fs-4" >Jango</span>
+            </a>
+              
+          </a>
+
+          <!-- Divider -->
+          <hr class="sidebar-divider my-0">
+
+          <!-- Nav Item - Dashboard -->
+          <li class="nav-item " >
+            <a routerLink="/dashboard" class="nav-link text-white" >
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+              Dashboard
+            </a>
+          </li>
+
+          <!-- Divider -->
+          <hr class="sidebar-divider">
+
+      
+        
+
+          <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item " >
+            <a routerLink="/fundaccount" class="nav-link text-white"aria-current="page">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+              Fund Account
+            </a>
+             
+          </li>
+          <hr class="sidebar-divider">
+          <!-- Nav Item - Utilities Collapse Menu -->
+          <li class="nav-item active" style="background-color: gold; color: black;">
+            <a routerLink="/transfer" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+              Transfer
+            </a> 
+          </li>
+
+          <!-- Divider -->
+          <hr class="sidebar-divider">
+
+          <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item">
+            <a routerLink="/transactionTable" class="nav-link active"  >
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+              Transactions
+            </a>
+          </li>
+          <hr class="sidebar-divider">
+
+          <!-- Nav Item - Charts -->
+          <li class="nav-item">
+            <a  routerLink="/profile" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+              Profile
+            </a>
+          </li>
+          <hr class="sidebar-divider">
+          <!-- Nav Item - Tables -->
+          <li class="nav-item">
+            <a routerLink="/login" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+              Log-out
+            </a>
+          </li>
+
+          <!-- Divider -->
+          <hr class="sidebar-divider d-none d-md-block">
+
+          
+
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+          <!-- Main Content -->
+          <div id="content">
+
+              <!-- Topbar -->
+              <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow " style="background-color:  #343a40;color: white;">
+
+                  <!-- Sidebar Toggle (Topbar) -->
+                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                      <i class="fa fa-bars"></i>
+                  </button>
+
+                  <!-- Topbar Search -->
+                  <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="my-5" >
+                      <h3> Transfer</h3>
+                       <hr> 
+                  </div>
                     </div>
 
-                </div>
-            </div>
+                  <!-- Topbar Navbar -->
+                  <ul class="navbar-nav ml-auto">
 
-        </div>
-    </div>
+                     
+                      <!-- Nav Item - Alerts -->
+                      <li class="nav-item dropdown no-arrow mx-1">
+                          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-bell fa-fw"></i>
+                              <!-- Counter - Alerts -->
+                              <span class="badge badge-danger badge-counter">3+</span>
+                          </a>
+                          <!-- Dropdown - Alerts -->
+                          
+                      </li>
 
-</div>
+                      <!-- Nav Item - Messages -->
+                      <li class="nav-item dropdown no-arrow mx-1">
+                          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-envelope fa-fw"></i>
+                              <!-- Counter - Messages -->
+                              <span class="badge badge-danger badge-counter">7</span>
+                          </a>
+                         
+                        
+                      </li>
+
+                      <div class="topbar-divider d-none d-sm-block"></div>
+
+                      <!-- Nav Item - User Information -->
+                      <li class="nav-item dropdown no-arrow">
+                          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Jango admin</span>
+                              <img class="img-profile rounded-circle">
+                          </a>
+                          <!-- Dropdown - User Information -->
+                          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                              aria-labelledby="userDropdown">
+                              <a class="dropdown-item" href="#">
+                                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  Profile
+                              </a>
+                              <a class="dropdown-item" href="#">
+                                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  Settings
+                              </a>
+                              <a class="dropdown-item" href="#">
+                                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  Activity Log
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  Logout
+                              </a>
+                          </div>
+                      </li>
+
+                  </ul>
+
+              </nav>
+              <!-- End of Topbar -->
+
+              <!-- Begin Page Content -->
+              <div class="container" >
+                
+                <div class="row">
+
+                  <div class="col-12">
+                      <!-- Page title -->
+                     
+                      <div class="row height d-flex justify-content-center align-items-center" style="background-color: white; height: 100%;" >
+                        
+                          <div class="col-md-8">
+                            <br>
+                            <br>
+                            
+                            <form [formGroup]="myUserData" *ngIf="change" id="SearchForAccount">
+                              <h4> Enter User Detail</h4>
+                            <hr>
+                            <div class="search">
+                              <i class="fa fa-search"></i>
+                              <input type="text" formControlName="Search" id="Searchdata" class="form-control" placeholder="Enter Username/Email/Phonenumber">
+                              <button class="Navbutton" (click)="Userdata()" style="">Search</button>
+                            </div>
+                            </form>
+                            <form class="bg-light-soft" [formGroup]="Transferdatas" *ngIf="Tchange" id="TransferForm"  style="border-radius: 1rem;">
+                              <div class="row mb-5 gx-5">
+                                  <!-- Contact detail -->
+                                  <div class="col-xxl-12 mb-5 mb-xxl-0">
+                                      <div class="bg-light-soft px-4 py-5 rounded">
+                                          <div class="row g-3">
+                                              <h4 class="mb-4 mt-0">User Information</h4>
+                                              <hr>
+                                              <!-- First Name -->
+                                              <div class="col-md-12">
+                                                  <div class="input-field">
+                                                      <span class="fa fa-user p-2"></span>
+                                                      <input  type="text" placeholder="Name" value="{{SearchData.response}}" [readOnly]="true">
+                                                  </div>
+                                                  
+                                              </div>
+                                              
+                                              <input type="text"  placeholder="Name"value="{{CurrentUsers}}"  hidden="" >
+                                             
+                                              <div class="col-md-12">
+                                                <div class="input-field">
+                                                    <span class="fa fa-user p-2"></span>
+                                                    <input formControlName="Amount" type="text"  id="AmountS" placeholder="Amount" >
+                                                </div>
+                        
+                                            </div>
+                                            <div class="col-md-12">
+                                              <div class="input-field">
+                                                  <span class="fa fa-lock p-2"></span>
+                                                  <input formControlName="Pin" type="text" id="PinS"  placeholder="Pin" >
+                                              </div>
+                      
+                                          </div>
+                                             
+                                             
+                                          </div> <!-- Row END -->
+                                      </div>
+                                  </div>
+                                  <!-- Upload profile -->
+                                  
+                                 
+                              </div> 
+                              <div class="col-md-12">
+                                <button type="submit" (click)="Transferdata()" class="btn btn-outline-warning btn-block mt-4 w-100 "> Send</button>
+                                
+                            </div>
+                            <div class="col-md-12">
+                              <button type="submit" (click)="Goback()" class="btn btn-outline-warning btn-block mt-4 w-100 "> Back</button>
+                              
+                          </div>
+                               
+                      </form> <!-- Form END -->
+                      <form class="bg-light-soft" [formGroup]="AddPin" *ngIf="Pchange" id="TransferForm"  style="border-radius: 1rem;">
+                        <div class="row mb-5 gx-5">
+                            <!-- Contact detail -->
+                            <div class="col-xxl-12 mb-5 mb-xxl-0">
+                                <div class="bg-light-soft px-4 py-5 rounded">
+                                    <div class="row g-3">
+                                        <h4 class="mb-4 mt-0">User Pin</h4>
+                                        <hr>
+                                        
+                                       
+                                        
+                                        
+                                       
+                                        <div class="col-md-12">
+                                          <div class="input-field">
+                                              <span class="fa fa-lock p-2"></span>
+                                              <input formControlName="pin" type="password" maxlength="4" minlength="4" id="APinS" placeholder="Pin" >
+                                          </div>
+                  
+                                      </div>
+                                      <div class="col-md-12">
+                                        <div class="input-field">
+                                            <span class="fa fa-lock p-2"></span>
+                                            <input formControlName="verifyPin" type="password" maxlength="4" minlength="4" id="VPinS"  placeholder="VerifyPin" >
+                                        </div>
+                
+                                    </div>
+                                       
+                                       
+                                    </div> 
+                                </div>
+                            </div>
+                         
+                            
+                           
+                        </div> 
+                        <div class="col-md-12">
+                          <button type="submit" (click)="SendPin()" class="btn btn-outline-warning btn-block mt-4 w-100 "> Create Pin</button>
+                          
+                      </div>
+                      
+                         
+                </form> <!-- Form END -->
+                <br>
+                <br>
+                <br> 
+                      </div>
+                      
+                      <!-- <div class="col-md-4" style="border-left: 3px solid gold; "> -->
+
+
+
+
+                          <!-- </div> -->
+                        
+                        </div>
+                     
+                  </div>
+              
+
+          
+
+                </div>  
+
+              </div>
+              <!-- /.container-fluid -->
+
+          </div>
+          <!-- End of Main Content -->
+
+
+      </div>
+      <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+ 
+
+
+
+

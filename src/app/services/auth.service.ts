@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private baseUrl: string = "http://localhost:7088/api";
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient ) { }
 
 
 
@@ -53,5 +53,66 @@ export class AuthService {
   CheckforAccount(userObj:any){
     return this.http.post<any>(`${this.baseUrl}/PeerToPeerTransaction/CheckforAccount`,userObj)
   }
+  UpdateUser(userObj:any){
+    return this.http.post<any>(`${this.baseUrl}/PeerToPeer/UpdateUserDetails`,userObj)
+  }
+  CreditAccount(userObj:any){
+    return this.http.post<any>(`${this.baseUrl}/PayStack/InitializePayment`,userObj)
+  }
+
+  ChangePin(userObj :any){
+    return this.http.post<any>(`${this.baseUrl}/PeerToPeer/UpdateUserPin`,userObj)
+
+  }
+ChangePassword(userObj: any){
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/UpdateUserPassword`,userObj)
+}
+
+CheckForQuestion(){
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetQuestionQA`)
+
+}
+GetQuestion(){
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetQuestionList`)
+
+}
+
+CreateSecurity( userObj:any){
+
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/CreateQA`, userObj)
+}
+
+
+CheckAnswer(UserObj: any){
+
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/CheckAnswerQA`,UserObj)
+}
+
+
+CheckForPin(){
+
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/CheckForPin`)
+}
+
+CreatePin( userObj: any){
+
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/CreatePin`,userObj)
+}
+
+ResetPassword(userObj: any){
+return this.http.post<any>(`${this.baseUrl}/PeerToPeer/ResetPassword`,userObj)
+
+}
+
+TransactionHistoryR(userObj: any){
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/TransactionHistoryDate`,userObj)
+
+}
+
+
+GenerateState(user:any){
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/GenerateStatement`,user)
+
+}
 
 }

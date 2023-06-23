@@ -32,7 +32,7 @@
         
 
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item  active" style="background-color: gold; color: black;">
+          <li class="nav-item  ">
             <a routerLink="/fundaccount" class="nav-link text-white"aria-current="page">
               <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
               Fund Account
@@ -41,7 +41,7 @@
           </li>
           <hr class="sidebar-divider">
           <!-- Nav Item - Utilities Collapse Menu -->
-          <li class="nav-item">
+          <li class="nav-item "  >
             <a routerLink="/transfer" class="nav-link text-white">
               <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
               Transfer
@@ -52,7 +52,7 @@
           <hr class="sidebar-divider">
 
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
+          <li class="nav-item active"  style="background-color: gold; color: black;">
             <a routerLink="/transactionTable" class="nav-link active"  >
               <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
               Transactions
@@ -101,7 +101,7 @@
                   <!-- Topbar Search -->
                   <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="my-5" >
-                      <h3> Fund Account</h3>
+                      <h3> Transactions</h3>
                        <hr> 
                   </div>
                     </div>
@@ -176,31 +176,127 @@
 
                 <div class="row">
                   <div class="col-12">
-                      <!-- Page title -->
-                     
-                      <div class="row height d-flex justify-content-center align-items-center" style="background-color: white; height: 100%;" >
+                    <!-- Page title -->
+                   
+                    <div class="row height d-flex justify-content-center align-items-center" id="stayin"  >
+                      
+                       <div class="col-md-8" >
                         
-                        <div class="col-md-8">
-                          <br>
-                          <br>
-                          <h3> Enter amount to initiate paystack</h3>
-                          <hr>
+                        <br>
+                        <br>
+                        <div class="headerInline">
+                          <mat-form-field class="example-form-field">
+
+                            <mat-label>Select Date Range</mat-label>
+
+                            <mat-date-range-input [formGroup]="campaignOne"
+
+                                [rangePicker]="campaignOnePicker">
+
+                                <input matStartDate placeholder="Start date" formControlName="start">
+
+                                <input matEndDate placeholder="End date" formControlName="end"
+
+                                    (dateChange)="TransactionTable()">
+
+                            </mat-date-range-input>
+
+                            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> 
+
+                            <mat-datepicker-toggle matIconSuffix
+
+                                [for]="campaignOnePicker"></mat-datepicker-toggle>
+
+                            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+
+                        </mat-form-field>
+                        
+                        <!-- <h3> List of your transactions </h3> -->
+                        <button type="button" id="generateButton" class="btn   btn-outline-dark"  (click)="openDialog()" >Generate Statement</button>
+                        
+
+                        </div>
+                        <!-- Button trigger modal -->
                           
-                         
-                            <iframe [src]="videoUrl" id="PaystckIFrame" title="iframe Example 1" width="1000" height="1000" *ngIf="Tchange"></iframe>
-                        <form  [formGroup]="myUserData" *ngIf="change">
-                          <div class="search">
+                         <hr> 
+                        <div class="ButtonPadding">
+                          <button class="btn btn-outline-success btn-lg" id="buttonSize" (click)="myCredits()"> Credit</button>
+                          <button  class="btn btn-outline-danger btn-lg" id="buttonSize" (click)="myDebits()"> Debit</button>
+                          <button class="btn btn-outline-warning btn-lg" id="buttonSize"(click)="myShowAll()"> Show All</button>
+
+                          <!-- <mat-form-field>
+                            <mat-label>What's your name?</mat-label>
+                            <input matInput [(ngModel)]="name">
+                          </mat-form-field>
+
+                          <button mat-raised-button (click)="openDialog()">
+                            open dialog
+                          </button>
+                          <li *ngIf="animal">
+                            You chose: <em>{{animal}}</em>
+                          </li> -->
+                 
+                        
+                          <!-- <mat-form-field >
+                            <mat-label>Enter a date range</mat-label>
+                            <mat-date-range-input [formGroup]="range" (change)="TransactionTable()" [rangePicker]="picker">
+                              <input matStartDate formControlName="start" placeholder="Start date">
+                              <input matEndDate formControlName="end" placeholder="End date">
+                            </mat-date-range-input>
+                            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>  
+                            <mat-date-range-picker #picker></mat-date-range-picker> -->
+                          
+                            <!-- <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+                          <!-- </mat-form-field> -->
+                          
+                          <!-- <p>Selected range: {{range.value | json}}</p> -->
+                          
+                           
+                          <!-- <button  [ngClass]=""> </button> -->
+                      </div>
+                      
+                        <div  class="tableArea" > 
+                            <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" class="table" >
+                              <thead class="thead-dark">
+                                <tr>
+                                 
+                                  <th scope="col">Sender-Info</th>
+                                  <th scope="col">Amount</th>
+                                  <th scope="col">Status</th>
+                                  <th scope="col">Reciever-Info</th>
+                                  <th scope="col">Date</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                              
+                                <tr class=""  *ngFor="let friend of TransactionDatas" >
+                                  <!-- <div *ngIf="friend.type_of_transaction === 'credit'" style="color: green;">  -->
+                                 
+                                  <td><div class="TableContent"><h4>{{friend.firstnameOfSender}}{{friend.lastnameOfSender}}</h4><h5>{{friend.account_Number_of_sender}}</h5></div></td>
+                                  <td  ><span [ngClass]="friend.type_of_transaction.toLocaleLowerCase() ==='credit'? 'badge badge-success':'badge badge-danger'"> {{friend.amount}} {{friend.currency}}</span> </td>
+                                  <td>Accepted</td>
+                                  <td><div class="TableContent"><h4>{{friend.firstnameOfReciever}} {{friend.lastnameOfReciever}}</h4> <h5>{{friend.account_Number_of_reciever}}</h5></div> </td>
+                                  <td>{{friend.date}}</td>
+                                  <!-- </div> -->
+                                </tr>
                             
-                            <input type="text" formControlName="Amount" class="form-control" placeholder="Please enter amount">
-                            <button class="Navbutton"  (click)="sendData()" style="">Send</button>
-                          </div>
-                        </form>
-                       <br>
-                       <br>
-                       <br>
-                    </div>
-                    </div>
+                              </tbody>
+                            </table>
+                            
+                            </div>
+                       
+                         
+                            <br>
+                            <br>
+                            <br>
+                     
+                  </div> 
                   </div>
+                </div>
+
               </div>
 
                   

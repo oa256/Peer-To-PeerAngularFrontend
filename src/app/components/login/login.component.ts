@@ -27,8 +27,13 @@ onLogin(){
       next:(res)=>{
       //  alert(res.response)
         localStorage.setItem('Token',res.response)
+        if(res.status){
         this._router.navigate(['/dashboard'])
-        
+        }
+        else{
+          alert(res.response);
+          window.location.reload()
+        }
       },
       error:(err)=>{
         alert(err?.error.response)

@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Generate Statement</h1>
+
+<div mat-dialog-content >
+  
+  <p>Please enter Date-Range</p>
+  <form [formGroup]="customerdata">
+  <mat-form-field color="accent">
+    <mat-label>Start-date</mat-label>
+    <input matInput formControlName="start" [matDatepicker]="picker1">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+
+
+    
+  </mat-form-field>
+  
+  <mat-form-field color="accent">
+    <mat-label>End-date</mat-label>
+    <input matInput formControlName="end" [matDatepicker]="picker2">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+  </mat-form-field>
+
+  <br>
+  <p>Please Select Currency</p>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Select</mat-label>
+    <mat-select formControlName="currency">
+      <mat-option value="NGN">NGN</mat-option>
+      <mat-option value="USD">USD</mat-option>
+      <mat-option value="EuroO">Euro</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  </form>
+  
+</div>
+<!-- <div mat-dialog-content>
+  
+
+
+</div> -->
+
+<div mat-dialog-actions >
+  <button  class="btn btn-danger" (click)="onGeneratePdf()"> Generate PDF</button>
+  <button class="btn btn-success" (click)="onGenerateExcel()"> Generate Excel</button>
+  <button class="btn btn-warning" (click)="onSendEmail()" cdkFocusInitial> Send to Email</button>
+</div>

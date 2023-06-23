@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { error } from 'jquery';
 
 
 
@@ -49,6 +50,9 @@ export class TransferComponent implements OnInit {
   CurrentUsers: any;
   public change = false;
   public Tchange = false;
+  AddPin!: FormGroup;
+  public Pchange = false
+
 ngOnInit(): void {
   
     this.change= true;
@@ -63,6 +67,39 @@ ngOnInit(): void {
     Account_number : this.CurrentUsers,
     Amount : ["",Validators.required],
     Pin:["",Validators.required] ,
+
+
+   })
+this.AddPin = this.fb.group({
+  pin:["", Validators.required, Validators.maxLength(4), Validators.minLength(4)],
+  verifyPin:["", Validators.required , Validators.maxLength(4), Validators.minLength(4)]
+
+
+})
+
+   this.auth.CheckForPin().subscribe({
+      next:(res)=>{
+          if (res.status == true){
+              this.change = true;
+              this.Tchange= false;
+            console.log(res);
+
+
+          }
+
+          else{
+            alert(res.response);
+            this.Pchange = true;
+            this.change = false;
+            this.Tchange= false;
+            console.log(res);
+
+          }
+      },
+      error:(err)=>{
+        alert(err?.error.response)
+      }
+
 
 
    })
@@ -118,7 +155,7 @@ this.Transferdatas.controls['Account_number'].setValue(this.CurrentUsers);
       if (res.status == true){
       alert(res.response);
       console.log(res);
-     
+      window.location.reload();
       
       }
 
@@ -141,10 +178,38 @@ Goback(){
 
   this.Tchange=false;
   this.change=true;
+  window.location.reload();
+}
+
+
+
+SendPin(){
+
+this.auth.CreatePin(this.AddPin.value).subscribe({
+  next:(res)=>{
+    if(res.status==true){
+      alert(res.response);
+      window.location.reload()
+
+    }
+    else{
+
+      alert(res.response);
+    }
+
+  },
+error: (err)=>{
+
+  alert(err?.error.response)
+    
+}
+
+
+})
+
 
 
 
 }
-
 
 }

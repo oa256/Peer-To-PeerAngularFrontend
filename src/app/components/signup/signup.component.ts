@@ -26,7 +26,8 @@ username:['',Validators.required],
 email:['',Validators.required],
 password:['',Validators.required],
 confirmPassword:['',Validators.required],
-phoneNumber:['',Validators.required]
+phoneNumber:['',Validators.required],
+Address: ['',Validators.required]
 })
 }
 

@@ -24,7 +24,7 @@
                                 <button  (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" class="btn btn-outline-warning btn-block mt-4 w-100 "> Login</button>
 
                                 <div class="form-inline fr mt-4">
-                                    <a id="foget" class="font-weight-bold"> Forgot password?</a><br>
+                                    <a id="foget"  routerLink="/resetPassword" class="font-weight-bold"> Forgot password?</a><br>
                                     
                                 </div>
                                 <div class="text-center pt-4 text-muted"> Dont have account?<a id="forget" routerLink="/signup"> Sign up</a></div>

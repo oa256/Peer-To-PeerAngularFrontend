@@ -43,6 +43,12 @@
                                         <input formControlName="phoneNumber"type="text" placeholder="Phonenumber" >
                                     </div>
                                 </div>
+                                <div class ="form-group pt-3">
+                                  <div class="input-field">
+                                      <span class="fa fa-address-card p-2"></span>
+                                      <input formControlName="Address"type="text" placeholder="Address">
+                                  </div>
+                              </div>
                         <div class="row"> 
                             <div class="col-sm-6 pt-3">
                                 <div class="password-field ">
@@ -60,12 +66,12 @@
                         </div>
                         <button  type="submit" (click)="onsignup()" class="btn btn-warning btn-block mt-4 w-100 ">
                             <!-- <span class ="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
-                            Sign up
+                            Create account
                             
                             </button>
         
                         
-                        <div class="text-center pt-4 text-muted"> Already have account?<a id="forget" routerLink="/login"> Sign in</a></div>
+                        <div class="text-center pt-4 text-muted"> Already have account?<a id="forget" routerLink="/login"> login</a></div>
                     </div>
                 
                   </form>

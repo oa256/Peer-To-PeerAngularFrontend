@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -49,7 +50,7 @@ export class UserPersonalData{
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit{
-  TransactionDatas!: TransactionData[] ;
+ 
   CurrentUserData!: UserData;
 UserPersonalDataN!: UserPersonalData;
 
@@ -66,8 +67,6 @@ firstN : any;
       this.CurrentUserData =res;
       this.Balancedata =res;
 
-     
-
      console.log(res)
      ;
     
@@ -79,20 +78,7 @@ firstN : any;
   
   })
 
-  this.auth.Transactions().subscribe({
-    next:(res)=>{
-     // alert(res.response)
-
-     this.TransactionDatas = res;
-    console.log(res)
-    
-      
-    },
-    error:(err)=>{
-      alert(err?.error.response)
-    }
-  
-  })
+ 
 
   this.auth.FnL().subscribe({
     next:(res)=>{
@@ -113,4 +99,8 @@ firstN : any;
 
 
   }
+
+
+
+  
 }

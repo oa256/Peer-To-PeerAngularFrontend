@@ -7,6 +7,9 @@ import { authGuard } from './auth.guard';
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { TransferComponent } from './components/transfer/transfer/transfer.component';
 import { FundaccountComponent } from './components/fundaccount/fundaccount/fundaccount.component';
+import { TransactionTableComponent } from './components/transactionTable/transaction-table/transaction-table.component';
+import { ResetPasswordComponent } from './components/resetPassword/reset-password/reset-password.component';
+
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -14,7 +17,10 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'profile',component:ProfileComponent},
   {path:'transfer',component:TransferComponent},
-  {path:'fundaccount',component:FundaccountComponent}
+  {path:'fundaccount',component:FundaccountComponent},
+  {path:'transactionTable',component:TransactionTableComponent},
+  {path:'resetPassword',component:ResetPasswordComponent}
+  
 
 ];
 

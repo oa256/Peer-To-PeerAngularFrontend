@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,8 +15,22 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { TransferComponent } from './components/transfer/transfer/transfer.component';
 import { FundaccountComponent } from './components/fundaccount/fundaccount/fundaccount.component';
+import { DataTablesModule} from "angular-datatables";
+import { TransactionTableComponent } from './components/transactionTable/transaction-table/transaction-table.component';
+import { ResetPasswordComponent } from './components/resetPassword/reset-password/reset-password.component'
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import {MatSelectModule} from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core'; 
+import { MatInputModule } from '@angular/material/input'; 
+import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatButtonModule } from '@angular/material/button'; 
+import { MatButtonToggleModule } from '@angular/material/button-toggle'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import {NgIf, JsonPipe} from '@angular/common';
 
-
+import { NewdialogComponent } from './components/newdialog/newdialog.component';
 
 
 @NgModule({
@@ -26,13 +41,31 @@ import { FundaccountComponent } from './components/fundaccount/fundaccount/funda
     DashboardComponent,
     ProfileComponent,
     TransferComponent,
-    FundaccountComponent
+    FundaccountComponent,
+    TransactionTableComponent,
+    ResetPasswordComponent,
+    NewdialogComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
+    MatFormFieldModule, 
+    MatDatepickerModule, 
+    MatNativeDateModule, 
+    MatInputModule, 
+    MatDialogModule, 
+    MatButtonModule, 
+    MatButtonToggleModule,
+    NgIf,
+    JsonPipe,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatSelectModule
   ],
   providers: [
     {
