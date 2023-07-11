@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 export class TransactionData{
   constructor(
@@ -27,7 +28,7 @@ export class UserData{
     public account_Number: string,
     public balance: number,
     public currency : string,
-    public id: number,
+   
 
   ){}
 
@@ -47,11 +48,12 @@ export class UserPersonalData{
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+ 
 })
 export class DashboardComponent implements OnInit{
  
-  CurrentUserData!: UserData;
+  CurrentUserData!: UserData[];
 UserPersonalDataN!: UserPersonalData;
 
 Balancedata :any;

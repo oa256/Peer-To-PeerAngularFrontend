@@ -29,9 +29,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {NgIf, JsonPipe} from '@angular/common';
-
+import {MatRadioModule} from '@angular/material/radio';
 import { NewdialogComponent } from './components/newdialog/newdialog.component';
-
+import { AccountsComponent } from './components/Accounts/accounts/accounts.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NewdialogComponent } from './components/newdialog/newdialog.component';
     TransactionTableComponent,
     ResetPasswordComponent,
     NewdialogComponent,
+    AccountsComponent
     
     
   ],
@@ -65,7 +67,9 @@ import { NewdialogComponent } from './components/newdialog/newdialog.component';
     JsonPipe,
     BrowserAnimationsModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule,
+    MatTableModule
   ],
   providers: [
     {

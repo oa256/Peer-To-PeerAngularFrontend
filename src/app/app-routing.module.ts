@@ -9,6 +9,7 @@ import { TransferComponent } from './components/transfer/transfer/transfer.compo
 import { FundaccountComponent } from './components/fundaccount/fundaccount/fundaccount.component';
 import { TransactionTableComponent } from './components/transactionTable/transaction-table/transaction-table.component';
 import { ResetPasswordComponent } from './components/resetPassword/reset-password/reset-password.component';
+import { AccountsComponent } from './components/Accounts/accounts/accounts.component';
 
 
 const routes: Routes = [
@@ -19,8 +20,8 @@ const routes: Routes = [
   {path:'transfer',component:TransferComponent},
   {path:'fundaccount',component:FundaccountComponent},
   {path:'transactionTable',component:TransactionTableComponent},
-  {path:'resetPassword',component:ResetPasswordComponent}
-  
+  {path:'resetPassword',component:ResetPasswordComponent},
+  {path:'accounts',component:AccountsComponent }
 
 ];
 

@@ -68,6 +68,15 @@
             </a>
           </li>
           <hr class="sidebar-divider">
+  
+          <!-- Nav Item - Charts -->
+          <li class="nav-item " >
+            <a  routerLink="/accounts" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+              Accounts
+            </a>
+          </li>
+          <hr class="sidebar-divider">
           <!-- Nav Item - Tables -->
           <li class="nav-item">
             <a routerLink="/login" class="nav-link text-white">
@@ -191,7 +200,7 @@
 
                             <mat-date-range-input [formGroup]="campaignOne"
 
-                                [rangePicker]="campaignOnePicker">
+                              [rangePicker]="campaignOnePicker">
 
                                 <input matStartDate placeholder="Start date" formControlName="start">
 

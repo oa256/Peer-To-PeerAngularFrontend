@@ -110,9 +110,36 @@ TransactionHistoryR(userObj: any){
 }
 
 
-GenerateState(user:any){
-  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/GenerateStatement`,user)
+GenerateStateDownload(user:any){
+  return this.http.post(`${this.baseUrl}/PeerToPeer/GenerateStatementDownload`,user,{ observe: 'response', responseType: 'blob' });
 
+}
+
+GenerateStateEmail(user:any){
+
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/GenerateStatementEmail`,user)
+
+}
+
+CreateDomAccount(user:any){
+
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/CreateDomAccount`,user)
+
+}
+
+GetCurrencies(){
+
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/CheckForCurrencies`)
+}
+
+GetRates(){
+
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetMyRates`)
+}
+
+GetMyCurrencies(){
+
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetmyCurrencies`)  
 }
 
 }

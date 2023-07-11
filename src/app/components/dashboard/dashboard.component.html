@@ -68,6 +68,15 @@
               </a>
             </li>
             <hr class="sidebar-divider">
+  
+            <!-- Nav Item - Charts -->
+            <li class="nav-item " >
+              <a  routerLink="/accounts" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                Accounts
+              </a>
+            </li>
+            <hr class="sidebar-divider">
             <!-- Nav Item - Tables -->
             <li class="nav-item">
               <a routerLink="/login" class="nav-link text-white">
@@ -173,11 +182,12 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    
                     
 
                     <!-- Content Row -->
                     <div class="row">
+                        
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-4 col-md-6 mb-4">
@@ -196,6 +206,7 @@
                                 </div>
                             </div>
                         </div>
+                       
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-4 col-md-6 mb-4">
@@ -205,7 +216,22 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Balance</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{Balancedata.balance.toLocaleString()}} NGN</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                
+                                                <mat-form-field  style="width: 100%;" >
+                                                    <mat-label>Select Currency</mat-label>
+                                                    <mat-select >
+                                                      
+                                                      <mat-option   *ngFor="let Currency of CurrentUserData"   value={{Currency.balance}}><span style="font-weight:bold ;color: #198754; font-size: large;">{{Currency.balance}} {{Currency.currency}} </span>  
+                                                       </mat-option>
+                                                      
+                                                    </mat-select>
+                                                  </mat-form-field>
+      
+                                                
+                                                <!-- {{Balancedata.balance.toLocaleString()}} NGN -->
+                                            
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -252,7 +278,17 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                               Account Number  </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{Balancedata.account_Number}}</div>
+                                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{Balancedata.account_Number}}</div> -->
+                                            <mat-form-field  style="width: 100%;" >
+                                                <mat-label>Select Account</mat-label>
+                                                <mat-select >
+                                                  
+                                                  <mat-option   *ngFor="let Currency of CurrentUserData"   value={{Currency.account_Number}}><span style="font-weight:bold ;color: #ffc107; font-size: large;">{{Currency.account_Number}} {{Currency.currency}}</span>  
+                                                   </mat-option>
+                                                  
+                                                </mat-select>
+                                              </mat-form-field> 
+                                            
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>

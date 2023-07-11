@@ -25,7 +25,7 @@ export class NewdialogComponent  implements OnInit{
   transactionHistorydata!: FormGroup;
   type_of_transaction !: string;
   customerdata!: FormGroup;
-
+  currenciesFromBackend=[];
 
   ngOnInit(): void {
     
@@ -39,6 +39,22 @@ export class NewdialogComponent  implements OnInit{
     })
 
 
+
+    this.auth.GetMyCurrencies().subscribe({
+      next:(res)=>{
+
+      this.currenciesFromBackend= res;
+
+      console.log(res);
+      },
+      error:(err)=>{
+        alert(err?.error.response)
+
+      }
+
+    })
+  
+
   }
 
 
@@ -46,77 +62,130 @@ export class NewdialogComponent  implements OnInit{
     this.dialogRef.close();
   }
   
-  onGeneratePdf(): void{
-    this.type_of_transaction= "Pdf"
-    
-    this.customerdata.controls["type_Of_Execution"].setValue("Pdf");
-    this.auth.GenerateState(this.customerdata.value).subscribe({
-      next:(res)=>{
-    
+
+  // onGenerateFile(): void{
+
+  //   this.auth.GenerateState(this.customerdata.value).subscribe(
+  //   res=>{
+  //   let blob: Blob = res.body as blob;
+
+  //       // if((res.response =="Email has been sent")){
+  //       //   alert(res.response);
   
-        alert(res.response);
-    
+  //       // }
+  //       // else{
+  //      // this.downloadFile(res);
+  //       // }
        
-      console.log(res);
+  //     console.log(res);
       
         
-      },
-      error:(err)=>{
-        alert(err?.error.response)
-      }
+  //     }),
+  //     error:(err)=>{
+  //       alert(err?.error.response)
+  //     }
     
-    })
+  //   })
   
     
 
 
 
-    this.dialogRef.close();
-  }
-  onGenerateExcel():void{
-    
-    this.customerdata.controls["type_Of_Execution"].setValue("Excel");
-    this.auth.GenerateState(this.customerdata.value).subscribe({
-      next:(res)=>{
-    
-  
-        alert(res.response);
-    
-       
-      console.log(res);
-      
-        
-      },
-      error:(err)=>{
-        alert(err?.error.response)
-      }
-    
-    })
+  //   this.dialogRef.close();
+  // }
+onGenerateFile(){
+if ( (this.customerdata.value["type_Of_Execution"]=="Pdf")||(this.customerdata.value["type_Of_Execution"]=="Excel") ){
+  this.auth.GenerateStateDownload(this.customerdata.value).subscribe(res =>{
+    let blob: Blob = res.body as Blob;
+    let Url = window.URL.createObjectURL(blob)
+   // window.open(Url);
+   let a = document.createElement('a');
+   a.download = "Statement";
+   a.href = Url;
+   a.click()
+  })
 
-
-    this.dialogRef.close();
 }
-  onSendEmail():void{
-    this.customerdata.controls["type_Of_Execution"].setValue("Email");
-    this.auth.GenerateState(this.customerdata.value).subscribe({
-      next:(res)=>{
+
+else{
+this.auth.GenerateStateEmail(this.customerdata.value).subscribe({
+next:(value)=>{
+  alert(value.response) ;
+
+
+  console.log(value.response);
+
+},
+
+error:(err)=> {
+  alert(err?.error.response)
+},
+
+
+})
+
+
+
+}
+this.dialogRef.close();
+
+}
+  
+  
+  // downloadFile(data: any) {
+
+  //   let blob:Blob = data.body as 
+  //   // const blob = new Blob([data]);
+  //   const url= window.URL.createObjectURL(blob);
+  //   window.open(url);
+  // }
+
+
+
+//   onGenerateExcel():void{
     
-        alert(res.response);
+//     // this.customerdata.controls["type_Of_Execution"].setValue("Excel");
+//     this.auth.GenerateState(this.customerdata.value).subscribe({
+//       next:(res)=>{
+    
+  
+//         alert(res.response);
+    
+       
+//       console.log(res);
+      
+        
+//       },
+//       error:(err)=>{
+//         alert(err?.error.response)
+//       }
+    
+//     })
+
+
+//     this.dialogRef.close();
+// }
+//   onSendEmail():void{
+//     // this.customerdata.controls["type_Of_Execution"].setValue("Email");
+//     this.auth.GenerateState(this.customerdata.value).subscribe({
+//       next:(res)=>{
+    
+//         alert(res.response);
       
     
        
-      console.log(res);
+//       console.log(res);
       
         
-      },
-      error:(err)=>{
-        alert(err?.error.response)
-      }
+//       },
+//       error:(err)=>{
+//         alert(err?.error.response)
+//       }
     
-    })
+//     })
 
 
-    this.dialogRef.close();
-}
+//     this.dialogRef.close();
+// }
 
 }
