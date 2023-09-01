@@ -15,6 +15,15 @@ export class TransferData{
 
   ){}
 }
+export class userDetail{
+  constructor(
+    public account_Number: string,
+    public balance: number,
+    public currency : string,
+    
+
+  ){}
+}
 
 export class  CurrentUser{
 
@@ -51,22 +60,38 @@ export class TransferComponent implements OnInit {
   public change = false;
   public Tchange = false;
   AddPin!: FormGroup;
-  public Pchange = false
+  public Pchange = false;
+  public ForAccount = true;
+  myCurrency!:FormGroup;
 
+ public Accounts :any;
+
+public mycurrent !: any;
+
+public myBalance : any ;
+public AccountNumber :any;
+
+public userDAta !: userDetail;
 ngOnInit(): void {
   
-    this.change= true;
+    this.change= false;
    this.myUserData = this.fb.group({
 
-     Search:["",Validators.required]
+     Search:["",Validators.required],
+    currency:["",Validators.required]
 
+   })
+
+   this.myCurrency= this.fb.group({
+    currency:["",Validators.required]
 
    })
   
    this.Transferdatas= this.fb.group({
-    Account_number : this.CurrentUsers,
+    Account_number : [],
     Amount : ["",Validators.required],
     Pin:["",Validators.required] ,
+    currency:["",Validators.required]
 
 
    })
@@ -80,7 +105,8 @@ this.AddPin = this.fb.group({
    this.auth.CheckForPin().subscribe({
       next:(res)=>{
           if (res.status == true){
-              this.change = true;
+              this.change = false;
+              this.ForAccount= true;
               this.Tchange= false;
             console.log(res);
 
@@ -104,18 +130,50 @@ this.AddPin = this.fb.group({
 
    })
   
+   this.auth.dashboard().subscribe({
+    next:(res)=>{
+    
+      // this.CurrentUserData =res;
+      // this.Balancedata =res;
+      this.Accounts=res;
+
+      this.userDAta= this.Accounts.filter((s: { currency: string; }) => s.currency === "NGN");
+       
+      console.log(this.userDAta);
+
+      this.myBalance = this.userDAta;
+      //console.log(this.userDAta.account_Number);
+     // this.AccountNumber = this.userDAta;
+      //this.myBalance= this.userDAta.balance;
+      
+ //     console.log(this.userDAta.account_Number);
+    
+     console.log(res)
+     ;
+    
+      
+    },
+    error:(err)=>{
+      alert(err?.error.response)
+    }
   
+  })
+
+
+
 
 }
 Userdata(){
 
+ this.myUserData.controls["currency"].setValue(this.myCurrency.value['currency']) ;
+ 
 this.auth.CheckforAccount(this.myUserData.value).subscribe({
         next:(res)=>{
           if (res.status == true){
           // alert(res.response);
           
           this.SearchData = res;
-          this.CurrentUsers = this.myUserData.value.Search;
+          this.CurrentUsers = this.myUserData.value["Search"];
          console.log(res);
           // this.CurrentUser= this.myUserData;
             this.Tchange=true;
@@ -133,7 +191,9 @@ this.auth.CheckforAccount(this.myUserData.value).subscribe({
   
       })
 
+     
 
+      this.Transferdatas.controls["currency"].setValue(this.myCurrency.value["currency"]) 
 
 }
 
@@ -148,7 +208,6 @@ Transferdata(){
 // this.transferDataSend.amount= this.Transferdatas.value.Amount;
 // this.transferDataSend.pin= this.Transferdatas.value.Pin;
 this.Transferdatas.controls['Account_number'].setValue(this.CurrentUsers);
-
 
   this.auth.Transfer(this.Transferdatas.value).subscribe({
     next:(res)=>{
@@ -210,6 +269,49 @@ error: (err)=>{
 
 
 
+}
+
+
+
+sendCurrency(){
+
+
+  // console.log(event.)
+  this.ForAccount = false;
+  this.change = true;
+
+
+  
+  console.log(this.myCurrency )
+  
+
+
+
+}
+AccountsPage(){
+
+
+  // console.log(event.)
+  this.ForAccount = true;
+  this.change = false;
+
+
+  
+  console.log(this.myCurrency )
+  
+
+
+
+}
+
+showBalance(x: string ){
+
+
+
+  var data = this.Accounts.filter((s: { currency: string; }) => s.currency === x)
+ 
+
+  this.myBalance = data;
 }
 
 }

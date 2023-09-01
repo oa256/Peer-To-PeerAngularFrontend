@@ -33,6 +33,22 @@ import {MatRadioModule} from '@angular/material/radio';
 import { NewdialogComponent } from './components/newdialog/newdialog.component';
 import { AccountsComponent } from './components/Accounts/accounts/accounts.component';
 import {MatTableModule} from '@angular/material/table';
+import { CAdialogComponent } from './components/CAdialog/cadialog/cadialog.component';
+import { AdmindashboardComponent } from './components/AdminDashboard/admindashboard/admindashboard.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { Chart}  from 'node_modules/chart.js';
+import {MatMenuModule} from '@angular/material/menu';
+import  {GridModule} from '@syncfusion/ej2-angular-grids';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { KycValidationComponent } from './components/kyc-validation/kyc-validation.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoaderServiceService } from './services/loader-service.service';
+import { LoadinginterceptorInterceptor } from './services/loadinginterceptor.interceptor';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TokenExpiredComponent } from './components/token-expired/token-expired.component';
+import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
+import { NotificationModalComponent } from './components/notification-modal/notification-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +62,15 @@ import {MatTableModule} from '@angular/material/table';
     TransactionTableComponent,
     ResetPasswordComponent,
     NewdialogComponent,
-    AccountsComponent
+    AccountsComponent,
+    CAdialogComponent,
+    AdmindashboardComponent,
+    NavigationComponent,
+    KycValidationComponent,
+    SpinnerComponent,
+    TokenExpiredComponent,
+    ChatModalComponent,
+    NotificationModalComponent
     
     
   ],
@@ -69,12 +93,28 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     MatSelectModule,
     MatRadioModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule,
+    MatMenuModule,
+   MatSnackBarModule,
+   MatAutocompleteModule,
+  
+
+  
+    
+
+
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
+      multi:true
+
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:LoadinginterceptorInterceptor,
       multi:true
 
     }

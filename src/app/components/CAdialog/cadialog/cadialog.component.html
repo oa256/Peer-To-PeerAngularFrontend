@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Credit Account</h1>
+
+<div mat-dialog-content >
+  
+  
+  <form [formGroup]="CreditAccountData">
+
+    <p> Please select account</p> 
+
+
+     
+
+      <mat-form-field  style="width: 100%;">
+        <mat-label>Select</mat-label>
+        <mat-select (selectionChange)="rateometer()" formControlName="currency">
+          <mat-option  *ngFor="let x of mydata" value={{x.currency}} >(Balance: {{x.balance}} {{x.currency}})  {{x.account_Number}}</mat-option>
+            
+        </mat-select>
+      </mat-form-field>  
+
+    <p>Enter amount</p>
+    <input  type="text" disabled value="*{{this.myrate}} (rate)" >
+    <input type="text" value="" formControlName="amount" placeholder="Amount in Niara"> 
+  
+  </form>
+  
+</div>
+
+  
+
+<button class="btn btn-success btn-lg m-4" (click)="sendToBackEnd()" cdkFocusInitial>Credit</button>
+<button class="btn btn-danger btn-lg float-end m-4" (click)="onNoClick()" cdkFocusInitial> Back</button>
+
+
+<!-- <div mat-dialog-actions > -->
+  <!-- <button  class="btn btn-danger" (click)="onGeneratePdf()"> Download PDF</button>
+  <button class="btn btn-success" (click)="onGenerateExcel()"> Download Excel</button>
+  <button class="btn btn-warning" (click)="onSendEmail()" > Send to Email</button> -->
+  
+<!-- </div> -->

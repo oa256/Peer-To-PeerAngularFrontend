@@ -52,7 +52,7 @@ this.currencyfg.controls["currency"].setValue(this.data.currency);
   
   
     })
-
+    this.dialogRef.close();
 
 
   }

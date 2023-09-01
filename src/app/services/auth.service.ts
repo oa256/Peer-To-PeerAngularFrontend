@@ -142,4 +142,47 @@ GetMyCurrencies(){
   return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetmyCurrencies`)  
 }
 
+
+CreditDomAccount(user: any){
+
+return this.http.post<any>(`${this.baseUrl}/PeerToPeerTransaction/CreditDomAccount`,user)
+
+}
+
+
+GetMyNotification(){
+
+return this.http.get<any>(`${this.baseUrl}/Notifications/GetListOfNotification`)
+
+}
+
+SetNotificationtoRead(user:any){
+
+  return this.http.put<any>(`${this.baseUrl}/Notifications/SetNotificationToRead`,user)
+}
+
+GetKycDocumentsRequired(){
+return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetKycDocumentsRequired`)
+}
+
+UploadKycFile(user : any  ){
+
+  return this.http.post<any>(`${this.baseUrl}/PeerToPeer/UploadKycFile`,user)
+}
+
+
+GetMessages(){
+
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetAdminChat`)
+}
+
+GetOtherUsersInfo(){
+return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetOtherUsersInfo`)
+
+}
+
+GetAdminChat(){
+  return this.http.get<any>(`${this.baseUrl}/PeerToPeer/GetAdminChat`)
+}
+
 }

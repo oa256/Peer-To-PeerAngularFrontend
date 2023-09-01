@@ -6,16 +6,16 @@
 </div>
 
 </div> -->
-<div class="card text-center ">
-    <div class="card-header font-weight-bold ">
+<div class="card  border-info mb-3 ">
+    <div class="card-header text-center bg-info">
     <h2 >Alert!</h2> 
     </div>
     <div class="card-body">
-      <h4 class="card-title font-weight-bold">Confirmation</h4>
+      <h4 class="card-title font-weight-bold">Confirmation!</h4>
       <p class="card-text font-weight-bold">The cost of this transaction would be : {{data.rate}} NGN </p>
      
       <button class="btn btn-success btn-lg p-3" (click)=" Sendata()" > Accept </button>
-      <button class="btn btn-danger  btn-lg p-3"  (click)="onNoClick()" mat-button mat-dialog-close> Close </button>
+    <button class="btn btn-danger float-end btn-lg p-3"  (click)="onNoClick()" mat-button mat-dialog-close> Close </button>
     </div>
    
   </div>

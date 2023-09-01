@@ -8,6 +8,7 @@ import { DomSanitizer,SafeResourceUrl,SafeUrl } from '@angular/platform-browser'
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../dialog/dialog/dialog.component';
 import { error } from 'jquery';
+import { CAdialogComponent } from '../../CAdialog/cadialog/cadialog.component';
 
 
 export interface PeriodicElement {
@@ -31,7 +32,9 @@ export class myrates{
 constructor( 
   public currency: string,
   public rate: number,
-  public id: number
+  public id: number,
+  public charge: number,
+
 ){}
 
 
@@ -66,11 +69,11 @@ export class AccountsComponent  implements  OnInit{
     
   }
   createAccountData!:FormGroup;
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-rate'];
+  displayedColumns: string[] = [ 'demo-name', 'demo-rate'];
   dataSource = ELEMENT_DATA;
   datafromBackend !:  myrates[];
   mydata!: UserDataFromBackEnd[];
-
+  otherdata: Array< UserDataFromBackEnd>=[];
   currenciesFromBackend=[];
   rate!:rate;
   ngOnInit(): void {
@@ -117,6 +120,7 @@ export class AccountsComponent  implements  OnInit{
       next:(res) =>{
 
         this.dataSource=res;
+        console.log(res);
       },
       error:(err)=>{
         alert(err?.error.response)
@@ -176,7 +180,7 @@ export class AccountsComponent  implements  OnInit{
 
 
     this.dialog.open(DialogComponent, {
-     width:"50%",
+     width:"30%",
      data:{ currency: this.createAccountData.value["currency"],
             rate: number,
     
@@ -185,6 +189,39 @@ export class AccountsComponent  implements  OnInit{
 
   
   }
+
+
+  openDialo2(): void {
+   
+
+    this.mydata.forEach(element => {
+        if(element.currency != "NGN")
+              this.otherdata.push(element);
+            
+
+    });
+
+
+    const dialogRef = this.dialog.open(CAdialogComponent, { 
+      width:"30%",
+      data: { 
+        AccountDetail:this.otherdata,
+        rate:  this.dataSource
+      }
+   
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+  
+      this.otherdata= [];
+    });
+
+   
+  }
+  
+
+
+
 
 
 }

@@ -10,18 +10,25 @@ import { FundaccountComponent } from './components/fundaccount/fundaccount/funda
 import { TransactionTableComponent } from './components/transactionTable/transaction-table/transaction-table.component';
 import { ResetPasswordComponent } from './components/resetPassword/reset-password/reset-password.component';
 import { AccountsComponent } from './components/Accounts/accounts/accounts.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { KycValidationComponent } from './components/kyc-validation/kyc-validation.component';
 
 
 const routes: Routes = [
-  {path:'login',component:LoginComponent},
   {path:'signup', component:SignupComponent},
-  {path:'dashboard',component:DashboardComponent},
+  {path:'login',component:LoginComponent},
+  {path:'resetPassword',component:ResetPasswordComponent},
+  {path: '', component:NavigationComponent, 
+  children: [ {path:'dashboard',component:DashboardComponent},
   {path:'profile',component:ProfileComponent},
   {path:'transfer',component:TransferComponent},
   {path:'fundaccount',component:FundaccountComponent},
   {path:'transactionTable',component:TransactionTableComponent},
-  {path:'resetPassword',component:ResetPasswordComponent},
-  {path:'accounts',component:AccountsComponent }
+  {path:'accounts',component:AccountsComponent },
+  {path:'kycValidation', component : KycValidationComponent}
+] }
+ 
+ 
 
 ];
 

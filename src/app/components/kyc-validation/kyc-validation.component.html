@@ -1,0 +1,86 @@
+<div class="container">
+      <!-- Content Row -->
+      <div class="row">
+        <div class="col-12">
+            <div class="row height d-flex justify-content-center align-items-center" style="background-color: white; height: 100%;"> 
+                <div class="col-md-8">
+                    <br>
+                    <br>
+                   <p class="lead"> Required Documents</p>
+
+                 <hr>
+                     <!-- <div *ngFor="let x of ListOfRequiredDocuments">  
+                   <div  class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                 {{x.nameOfDocumentRequired}}   </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <ng-template #clicked>
+                    <input value="{{x.id}}" [hidden]="true">
+                   
+                    <input  type="file"  id="customFile" name="file" hidden="" >
+                    <label class="Unactiveuser"  for="customFile">Upload</label>
+                    <button class="btn btn-success">Send</button>
+                </ng-template>
+
+
+
+                     </div> -->
+                     <div *ngFor="let x of ListOfRequiredDocuments" class="m-4  shadow" >  
+                        <div class="card border-left-warning   h-100 py-2 " (click)="x.isClicked = !x.isClicked">
+                            <div class="card-body ">
+                                <div class="row no-gutters  align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            {{ x.nameOfDocumentRequired }}
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-auto">
+                                        <svg style="fill:gold " xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <ng-container *ngIf="x.isClicked; then clicked else notClicked"></ng-container>
+                    
+                        <ng-template #clicked>
+                            <div >
+                                <div class="square position-center float-center ">
+                                    <img   src={{image}} class="imageR" id="myImg"alt="" style="max-width: 30%; max-height: 30%;">
+                                </div>
+                                <input [ngModel]="x.id" name="documentId" type="hidden">
+                    
+                                <input type="file" (change)="handleFileSelect($event)" id="customFile{{ x.id }}" name="file" style="display:none">
+                                <label class="Unactiveuser btn-outline-warning" for="customFile{{ x.id }}">Upload</label>
+                    
+                                <button class="Unactiveuser   float-end "  (click)="SendDocument($event,x.id)">Send</button>
+                            </div>
+                        </ng-template>
+                    
+                        <ng-template #notClicked></ng-template>
+                    </div>
+                    
+                    <br>
+                    <br>
+
+                </div>
+                
+                
+            </div>
+
+
+
+        </div>
+        </div>
+</div>

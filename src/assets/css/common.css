@@ -1,9 +1,9 @@
 .outer{
     height:  100vh;
-    background-image: url("BnG.jpg");/*linear-gradient(to top, rgb(214, 188, 44) 50%, rgb(58, 58, 58) 90%) no-repeat*/;
-    background-size: cover;
+     background-image: url("BnG.jpg"); 
+   background-size: cover;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%; 
 
    }
 
@@ -13,6 +13,9 @@
         /* overflow-y: scroll;
         height: 405px!important; */
         }
+}
+svg {
+  fill: white;
 }
    
    .panel-heading{
@@ -116,11 +119,11 @@
     background-clip: text;
     font-family: "Audiowide", sans-serif;
    }
-#diffBack{
-  filter:  url("C:\Users\olaoluwaakinlade\OneDrive - Globus Bank Limited\Documents\angularProject\angular_auth\AngularAuthUI\src\app\components\signup\Jango.jpeg");
+/* #diffBack{
+  filter:  url("C:\Users\olaoluwaakinlade\OneDrive - Globus Bank Limited\Documents\angularProject\angular_auth\AngularAuthUI\src\app\components\signup\Jango.jpeg"); */
 /*need to remove this / only using it so that angular can see the image */
 
-}
+/* } */
 
 #NameStyle{
     color: #b48608; font-family: 'Droid serif', serif; font-size: 26px; font-weight: 400; font-style: italic;   text-align: center; 
@@ -5799,7 +5802,7 @@
   .toast.showing {
     opacity: 1;
   }
-  
+  /* start here */
   .toast.show {
     display: block;
     opacity: 1;
@@ -7281,7 +7284,7 @@
       align-self: stretch !important;
     }
   }
-  
+  /* second start  */
   @media (min-width: 768px) {
     .flex-md-row {
       flex-direction: row !important;
@@ -8086,7 +8089,7 @@
   .px-4 {
     padding-right: 1.5rem !important;
   }
-  
+  /* third guy */
   .pb-4,
   .py-4 {
     padding-bottom: 1.5rem !important;
@@ -8842,6 +8845,7 @@
     .m-md-n1 {
       margin: -0.25rem !important;
     }
+    /* fourth down */
     .mt-md-n1,
     .my-md-n1 {
       margin-top: -0.25rem !important;
@@ -8954,7 +8958,7 @@
       margin-left: auto !important;
     }
   }
-  
+  /* fifth down */
   @media (min-width: 992px) {
     .m-lg-0 {
       margin: 0 !important;
@@ -8967,6 +8971,7 @@
     .mx-lg-0 {
       margin-right: 0 !important;
     }
+    /* third stop */
     .mb-lg-0,
     .my-lg-0 {
       margin-bottom: 0 !important;
@@ -10318,7 +10323,7 @@
   .dropdown.no-arrow .dropdown-toggle::after {
     display: none;
   }
-  
+  /* six down */
   .sidebar .nav-item.dropdown .dropdown-toggle::after,
   .topbar .nav-item.dropdown .dropdown-toggle::after {
     width: 1rem;

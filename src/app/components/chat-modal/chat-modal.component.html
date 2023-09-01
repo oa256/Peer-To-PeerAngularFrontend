@@ -1,0 +1,86 @@
+
+
+
+<div class="card shadow my-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{this.RecieveUsername}}</h6>
+    </div>
+    <div >
+        <div class="card-body " >
+          
+            <div class="chat-page">
+                <div class="msg-inbox">
+                    <div class="chats">
+                         <div class="msg-page">
+                            
+                            <div *ngFor="let message of insideChatS "> 
+    
+    
+                                <div *ngIf="message.usernameReceiver == this.myUsername"> 
+                                      
+    
+    
+                                   <div class="received-chats">
+                                       <div class="received-chats-img">
+                                       
+           
+                                       </div>
+    
+                                       <div class="received-msg">
+                                           <div class="received-msg-inbox">
+                                         
+    
+                                                 <p>  {{message.message}}
+                                               </p>
+                                                <span class="time">{{message.dateTime}}</span> 
+                                           </div>
+                                       </div>
+                                   </div>
+    
+    
+                               </div>
+                               <div *ngIf="message.usernameSender == this.myUsername"> 
+                                   <div class="outgoing-chats">
+                                       <div class="outgoing-chats-img">
+                                          
+           
+                                       </div>
+    
+                                       
+                                           <div class="outgoing-chats-msg">
+                                                   <p class = "multi-msg">
+                                                   {{message.message}}
+                                               </p>
+                                               
+           
+           
+                                                <span class="time"> {{message.dateTime}}</span> 
+                                           </div>
+                                       
+                                   </div>
+                                   </div>
+                                </div> 
+    
+                          </div> 
+                    </div>
+                    
+    <!--  Message bottom section starts -->
+    <form [formGroup]="messageForm">
+                   <div class="msg-bottom" >
+                     <div class="input-group">
+                         <input [(ngModel)]="inputValue" type="text" class="form-control" formControlName="message" placeholder="Write message...">
+                        <button class ="btn btn-lg bg-success" (click)="SendMessage(this.RecieveUsername)"> Send</button>
+                     </div>
+                  
+                    </div> 
+        </form>            
+    <!-- Message bottom section ends. -->
+                </div>
+            </div>
+    
+     
+          
+    
+    </div>
+        </div>
+    </div>

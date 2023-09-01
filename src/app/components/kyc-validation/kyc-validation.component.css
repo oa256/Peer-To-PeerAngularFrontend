@@ -1,0 +1,29 @@
+.Unactiveuser{
+    background: white;
+    color: black;
+    padding: 25px 30px ;
+    font-weight: bold;
+    border: none; 
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    letter-spacing: 4px;
+    /* overflow: hidden; */
+    transition: 0.5s;
+    cursor: pointer;
+    border-color: white;
+    margin-right: 20px;
+   
+
+}
+.Unactiveuser:hover{
+    background: white;
+    color: #050801;
+    box-shadow: 0 0 5px gold,
+                0 0 25px gold,
+                0 0 50px gold,
+                0 0 200px gold;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+
+
+}
